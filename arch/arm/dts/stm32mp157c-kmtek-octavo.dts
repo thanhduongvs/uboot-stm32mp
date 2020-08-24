@@ -10,11 +10,9 @@
 #include "stm32mp15xc.dtsi"
 #include "stm32mp15-pinctrl.dtsi"
 #include "stm32mp15xxac-pinctrl.dtsi"
-#include "stm32mp157c-kmtek-octavo.dtsi"
-#include <dt-bindings/rtc/rtc-stm32.h>
-
+#include "stm32mp15xx-kmt.dtsi"
 / {
-	model = "STM32MP157C KMTEK OCTAVO Develop Board";
+	model = "KienMinhTek OSD32MP157C Board";
 	compatible = "st,stm32mp157c-kmtek-octavo", "st,stm32mp157";
 
 	aliases {
@@ -36,20 +34,6 @@
 			no-map;
 		};
 	};
-};
-
-&cryp1 {
-	status="okay";
-};
-
-&rtc {
-	st,lsco = <RTC_OUT2_RMP>;
-	pinctrl-0 = <&rtc_out2_rmp_pins_a>;
-	pinctrl-names = "default";
-};
-
-&optee_memory {
-	status = "okay";
 };
 
 &optee {
