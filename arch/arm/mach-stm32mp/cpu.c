@@ -437,10 +437,8 @@ static void setup_boot_mode(void)
 		}
 		break;
 	case BOOT_SERIAL_USB:
-		//env_set("boot_device", "usb");
-		//env_set("boot_instance", "0");
-		env_set("boot_device", "mmc");
-		env_set("boot_instance", "1");
+		env_set("boot_device", "usb");
+		env_set("boot_instance", "0");
 		break;
 	case BOOT_FLASH_SD:
 	case BOOT_FLASH_EMMC:
