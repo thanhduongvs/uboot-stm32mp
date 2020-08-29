@@ -714,7 +714,7 @@ int board_init(void)
 	if (CONFIG_IS_ENABLED(DM_GPIO_HOG))
 		gpio_hog_probe_all();
 
-	board_key_check();
+	//board_key_check();
 
 	if (board_is_ev1())
 		board_ev1_init();
