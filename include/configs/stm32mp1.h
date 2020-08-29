@@ -136,7 +136,7 @@
  * for nand or spi-nand boot, boot with on ubifs partition on UBI partition
  * for nor boot, use SD card = mmc0
  */
-/*
+
 #define STM32MP_BOOTCMD "bootcmd_stm32mp=" \
 	"echo \"Boot over ${boot_device}${boot_instance}!\";" \
 	"if test ${boot_device} = serial || test ${boot_device} = usb;" \
@@ -151,14 +151,7 @@
 		"if test ${boot_device} = nor;" \
 		"then env set boot_targets mmc0; fi;" \
 		"run distro_bootcmd;" \
-	"fi;\0"*/
-
-#define STM32MP_BOOTCMD "bootcmd_stm32mp=" \
-	"echo \"Boot over ${boot_device}${boot_instance}!\";" \
-	"env set boot_device \"mmc\";" \
-	"env set boot_instance \"1\";" \
-	"run bootcmd_mmc1;" \
-	"\0"
+	"fi;\0"
 
 /* DTIMG command added only for Android distribution */
 #ifdef CONFIG_CMD_DTIMG
@@ -238,7 +231,7 @@
  * and the ramdisk at the end.
  */
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootdelay=1\0" \
+	"bootdelay=3\0" \
 	"kernel_addr_r=0xc2000000\0" \
 	"fdt_addr_r=0xc4000000\0" \
 	"scriptaddr=0xc4100000\0" \
