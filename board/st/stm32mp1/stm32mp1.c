@@ -672,6 +672,7 @@ static bool board_is_ev1(void)
 	    (of_machine_is_compatible("st,stm32mp157a-ev1") ||
 	     of_machine_is_compatible("st,stm32mp157c-ev1") ||
 	     of_machine_is_compatible("st,stm32mp157d-ev1") ||
+		 of_machine_is_compatible("st,stm32mp157c-kmtek-octavo") ||
 	     of_machine_is_compatible("st,stm32mp157f-ev1")))
 		return true;
 
