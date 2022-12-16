@@ -281,7 +281,7 @@
 		VD-supply = <&v1v8_audio>;
 		VA-supply = <&v1v8_audio>;
 		VAHP-supply = <&v1v8_audio>;
-		reset-gpios = <&gpioh 13 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpiog 4 GPIO_ACTIVE_LOW>;
 		clocks = <&sai2a>;
 		clock-names = "MCLK";
 		status = "okay";
