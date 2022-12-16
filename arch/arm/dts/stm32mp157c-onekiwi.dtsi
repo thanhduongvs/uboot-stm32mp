@@ -164,6 +164,23 @@
 		};
 	};
 
+	i2c2_pins_mx: i2c2-mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('H', 4, AF4)>, /* I2C2_SCL */
+					 <STM32_PINMUX('H', 5, AF4)>; /* I2C2_SDA */
+			bias-disable;
+			drive-open-drain;
+			slew-rate = <0>;
+		};
+	};
+
+	i2c2_sleep_pins_mx: i2c2-sleep-mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('H', 4, ANALOG)>, /* I2C2_SCL */
+					 <STM32_PINMUX('H', 5, ANALOG)>; /* I2C2_SDA */
+		};
+	};
+
 	i2c5_pins_mx: i2c5_mx-0 {
 		u-boot,dm-pre-reloc;
 		pins {
@@ -290,6 +307,17 @@
 		rda,lnap;
 		rda,analog-out;
 	};*/
+};
+
+&i2c2 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&i2c2_pins_mx>;
+	pinctrl-1 = <&i2c2_sleep_pins_mx>;
+	i2c-scl-rising-time-ns = <100>;
+	i2c-scl-falling-time-ns = <7>;
+	status = "okay";
+	/delete-property/dmas;
+	/delete-property/dma-names;
 };
 
 &i2c5 {
@@ -669,6 +697,7 @@
 	};
 };
 
+/*
 &timers5 {
 	/delete-property/dmas;
 	/delete-property/dma-names;
@@ -676,7 +705,7 @@
 	timer@4 {
 		status = "okay";
 	};
-};
+};*/
 
 &timers6 {
 	/delete-property/dmas;
