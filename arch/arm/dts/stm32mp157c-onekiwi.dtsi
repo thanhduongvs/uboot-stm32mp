@@ -100,6 +100,27 @@
 &pinctrl {
 	u-boot,dm-pre-reloc;
 
+	sdmmc2_d47_mx_b: sdmmc2-d47-mx-1 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 8, AF9)>, /* SDMMC2_D4 */
+				 <STM32_PINMUX('B', 9, AF10)>, /* SDMMC2_D5 */
+				 <STM32_PINMUX('E', 5, AF9)>, /* SDMMC2_D6 */
+				 <STM32_PINMUX('D', 3, AF9)>; /* SDMMC2_D7 */
+			slew-rate = <1>;
+			drive-push-pull;
+			bias-pull-up;
+		};
+	};
+
+	sdmmc2_d47_sleep_mx_b: sdmmc2-d47-sleep-mx-1 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 8, ANALOG)>, /* SDMMC2_D4 */
+				 <STM32_PINMUX('B', 9, ANALOG)>, /* SDMMC2_D5 */
+				 <STM32_PINMUX('E', 5, ANALOG)>, /* SDMMC2_D6 */
+				 <STM32_PINMUX('D', 3, ANALOG)>; /* SDMMC2_D7 */
+		};
+	};
+
 	sai2a_pins_mx: sai2a_mx-0 {
 		pins {
 			pinmux = <STM32_PINMUX('E', 0, AF10)>, /* SAI2_MCLK_A */
@@ -136,43 +157,26 @@
 		};
 	};
 
-	i2c1_pins_mx: i2c1_mx-0 {
+	i2c5_pins_mx: i2c5_mx-0 {
 		u-boot,dm-pre-reloc;
 		pins {
-			pinmux = <STM32_PINMUX('H', 11, AF5)>, /* I2C1_SCL */
-					 <STM32_PINMUX('H', 12, AF5)>; /* I2C1_SDA */
+			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C1_SCL */
+					 <STM32_PINMUX('A', 12, AF4)>; /* I2C1_SDA */
 			bias-disable;
 			drive-open-drain;
 			slew-rate = <0>;
 		};
 	};
 
-	i2c1_sleep_pins_mx: i2c1_sleep_mx-0 {
+	i2c5_sleep_pins_mx: i2c5_sleep_mx-0 {
 		u-boot,dm-pre-reloc;
 		pins {
-			pinmux = <STM32_PINMUX('H', 11, ANALOG)>, /* I2C1_SCL */
-					 <STM32_PINMUX('H', 12, ANALOG)>; /* I2C1_SDA */
+			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C1_SCL */
+					 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C1_SDA */
 		};
 	};
 
-	i2c5_pins_mx: i2c5-mx-0 {
-		pins {
-			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C5_SCL */
-				 <STM32_PINMUX('A', 12, AF4)>; /* I2C5_SDA */
-			bias-disable;
-			drive-open-drain;
-			slew-rate = <0>;
-		};
-	};
-
-	i2c5_sleep_pins_mx: i2c5-sleep-mx-0 {
-		pins {
-			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C5_SCL */
-				 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C5_SDA */
-		};
-	};
-
-	spi6_pins_mx: spi6-mx-0 {
+	spi6_pins_mx: spi6_mx-0 {
 		pins {
 			pinmux = <STM32_PINMUX('A', 5, AF8)>, /* SPI6_SCK */
 					 <STM32_PINMUX('B', 5, AF8)>, /* SPI6_MOSI */
@@ -183,7 +187,7 @@
 		};
 	};
 
-	spi6_sleep_pins_mx: spi6-sleep-mx-0 {
+	spi6_sleep_pins_mx: spi6_sleep_mx-0 {
 		pins {
 			pinmux = <STM32_PINMUX('A', 5, ANALOG)>, /* SPI6_SCK */
 					 <STM32_PINMUX('B', 5, ANALOG)>, /* SPI6_MOSI */
@@ -277,7 +281,7 @@
 		VD-supply = <&v1v8_audio>;
 		VA-supply = <&v1v8_audio>;
 		VAHP-supply = <&v1v8_audio>;
-		reset-gpios = <&gpiog 4 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpioh 13 GPIO_ACTIVE_LOW>;
 		clocks = <&sai2a>;
 		clock-names = "MCLK";
 		status = "okay";
@@ -556,9 +560,9 @@
 
 &sdmmc2 {
 	pinctrl-names = "default", "opendrain", "sleep";
-	pinctrl-0 = <&sdmmc2_b4_pins_a &sdmmc2_d47_mx>;
-	pinctrl-1 = <&sdmmc2_b4_od_pins_a &sdmmc2_d47_mx>;
-	pinctrl-2 = <&sdmmc2_b4_sleep_pins_a &sdmmc2_d47_sleep_mx>;
+	pinctrl-0 = <&sdmmc2_b4_pins_a &sdmmc2_d47_mx_b>;
+	pinctrl-1 = <&sdmmc2_b4_od_pins_a &sdmmc2_d47_mx_b>;
+	pinctrl-2 = <&sdmmc2_b4_sleep_pins_a &sdmmc2_d47_sleep_mx_b>;
 	non-removable;
 	no-sd;
 	no-sdio;
