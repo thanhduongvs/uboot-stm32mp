@@ -319,6 +319,12 @@
 	/delete-property/dmas;
 	/delete-property/dma-names;
 
+	eeprom@53 {
+		compatible = "atmel,24c32";
+		reg = <0x53>;
+		pagesize = <16>;
+	};
+
 	pmic: stpmic@33 {
 		compatible = "st,stpmic1";
 		reg = <0x33>;
