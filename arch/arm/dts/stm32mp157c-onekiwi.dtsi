@@ -58,8 +58,8 @@
 
 	led {
 		compatible = "gpio-leds";
-		led1 {
-			label = "led1";
+		sim-reset {
+			label = "sim-reset";
 			gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "none";
 			default-state = "off";
