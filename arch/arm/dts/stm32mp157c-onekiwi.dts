@@ -35,13 +35,6 @@
 			no-map;
 		};
 	};
-
-	sim-enb {
-		compatible = "st,dummy";
-		pinctrl-names = "default";
-		pinctrl-0 = <&sim_enb_pin>;
-		status = "okay";
-	};
 };
 
 &optee {
