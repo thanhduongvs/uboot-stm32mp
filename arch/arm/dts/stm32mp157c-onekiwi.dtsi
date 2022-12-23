@@ -56,6 +56,16 @@
 		};
 	};
 
+	led {
+		compatible = "gpio-leds";
+		blue {
+			label = "heartbeat";
+			gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
+			linux,default-trigger = "heartbeat";
+			default-state = "off";
+		};
+	};
+
 	sound {
 		compatible = "audio-graph-card";
 		label = "STM32MP1-DK";
@@ -246,6 +256,15 @@
 		pins {
 			pinmux = <STM32_PINMUX('D', 8, ANALOG)>, /* USART3_TX */
 				 <STM32_PINMUX('D', 9, ANALOG)>; /* USART3_RX */
+		};
+	};
+
+	sim_enb_pin: sim-enb-pin-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 1, GPIO)>;
+			bias-pull-up;
+			drive-push-pull;
+			slew-rate = <0>;
 		};
 	};
 };
