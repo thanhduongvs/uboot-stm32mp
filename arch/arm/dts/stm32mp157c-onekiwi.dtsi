@@ -57,12 +57,11 @@
 	};
 
 	led {
-		compatible = "gpio-leds";
-		blue {
-			label = "heartbeat";
-			gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "heartbeat";
+		sim-reset {
+			label = "sim-reset";
+			gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
 			default-state = "off";
+			status = "okay";
 		};
 	};
 
@@ -386,6 +385,7 @@
 		compatible = "atmel,24c32";
 		reg = <0x50>;
 		pagesize = <32>;
+		status = "okay";
 	};
 
 	pmic: stpmic@33 {

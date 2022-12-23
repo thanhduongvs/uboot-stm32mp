@@ -19,7 +19,7 @@
 		u-boot,error-led = "error";
 		u-boot,mmc-env-partition = "ssbl";
 		st,fastboot-gpios = <&gpioa 13 GPIO_ACTIVE_LOW>;
-		st,stm32prog-gpios = <&gpioa 14 GPIO_ACTIVE_LOW>;
+		st,sim-disable = <&gpioc 5 GPIO_ACTIVE_LOW>;
 	};
 
 	led {
